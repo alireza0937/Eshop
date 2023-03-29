@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+
+<link rel="stylesheet" href="{% static 'blog/blog.css' %}">
+
+
+{% endblock %}
+
+
+
+
+    {% block page_title %} 
+    
+        {{ name | title}}
+    
+    {% endblock %}
+
+
+    {% block content %}
+        {% include 'blog/includes/include.html' %}
+        <h1>Your input day is <span>{{name}}</span></h1>
+        <h2>first html templates</h2>
+
+        {% if key is not None %}
+            <h3> {{ key |title }}</h3>
+        {% else %}
+            <h3> {{name}} not found in our database.</h3>
+        {% endif %}
+    {% endblock %}
+            
+

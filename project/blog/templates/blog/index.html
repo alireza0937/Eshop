@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block header %}
+        <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
+
+    {% endblock %}
+
+
+
+        {% block page_title%}
+            Days list
+        {% endblock %}
+            
+        {% block content%}
+        <ul>
+            {% for content in key %}
+                <li> <a target="_blank" href="{% url 'dynamic_function' content %}"> {{content | title}}  </a></li>
+            {% endfor %}
+        </ul>
+        {% endblock %}

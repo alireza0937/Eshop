@@ -1,0 +1,22 @@
+{% load render_partial %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>صفحه اصلی | فروشگاه کارزیبا</title>
+	{% include 'shared/header_ref.html' %}
+</head><!--/head-->
+
+<body>
+{% render_partial 'home.views.site_header' %}
+
+{% block content %}
+{% endblock  %}
+    
+{% render_partial 'home.views.footer' %}
+{% include 'shared/footer_ref.html' %}
+</body>
+</html>
