@@ -1,55 +1,41 @@
 from django.shortcuts import render, redirect
-from .forms import ContactUsForm, ContactUsModelForm
-from .models import ContactUs
+from .forms import  ContactUsModelForm, ProfileImagesForm
+from .models import ContactUs, ProfileM
 from django.views import View
+from django.views.generic.edit import FormView
+from django.views.generic import ListView
 
-# Create your views here.
+class ContactUsView(FormView):
+    template_name = 'contact/contact.html'
+    form_class = ContactUsModelForm
+    success_url = '/'
 
-class ContactUsView(View):
-    
-    def post(self, request):
-        contact_form = ContactUsModelForm(request.POST)
-        if contact_form.is_valid():
-            contact_form.save()
-            return redirect("index-page")
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
-
+class ProfileImage(View):
     def get(self, request):
-        contact_form = ContactUsModelForm()
-        return render(request, 'contact/contact.html', {
-            'form': contact_form
+        form = ProfileImagesForm()
+
+        return render(request, 'contact/profileimage.html', {
+            'form': form,
+        })
+    def post(self, request):
+        submit_data = ProfileImagesForm(request.POST, request.FILES)
+        if submit_data.is_valid():
+            profile = ProfileM(image=request.FILES['user_image'])
+            profile.save()
+            # saveimage(request.FILES['image'])
+            return render(request, 'contact/profileimage.html')
+
+        return render(request, 'contact/profileimage.html', {
+            'form': submit_data,
         })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def contact(request):
-    if request.method == 'POST':
-        # contact_form = ContactUsForm(request.POST)
-        contact_form = ContactUsModelForm(request.POST)
-        if contact_form.is_valid():
-            contact_form.save()
-            return redirect("index-page")
-                
-
-    else:       
-        # contact_form = ContactUsForm()
-        contact_form = ContactUsModelForm()
-    return render(request, 'contact/contact.html', {
-            'form': contact_form
-        })
-
+class ProfileImagesList(ListView) :
+    template_name = 'contact/imagelist.html'
+    context_object_name = 'proimages'
+    model = ProfileM
 

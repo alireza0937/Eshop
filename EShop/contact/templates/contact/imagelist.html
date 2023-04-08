@@ -1,0 +1,18 @@
+{% extends 'shared/base.html'%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul>
+                    {% for photos in proimages %}
+                        <li>
+                            <img src="{{ photos.image.url }}" alt="">
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

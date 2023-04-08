@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class ContactUs(models.Model):
@@ -10,10 +11,10 @@ class ContactUs(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     response = models.TextField(null=True, blank=True)
     is_read_by_admin = models.BooleanField(default=False)
-    
 
     def __str__(self):
         return self.title
-    
 
 
+class ProfileM(models.Model):
+    image = models.ImageField(upload_to='images')
