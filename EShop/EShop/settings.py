@@ -44,6 +44,14 @@ INSTALLED_APPS = [
     'home',
     'contact',
     'django_render_partial',
+    'SiteSetting',
+    'article',
+    'sorl.thumbnail',
+    'UserPanel',
+    'order',
+    'polls',
+    
+
 
     
 
@@ -123,7 +131,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+LOGIN_URL = 'login-page'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -144,6 +152,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'python.django1401@gmail.com'
 EMAIL_HOST_PASSWORD = '13751375'
 EMAIL_PORT = 587
-
 
 

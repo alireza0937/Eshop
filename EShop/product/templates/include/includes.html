@@ -1,22 +1,25 @@
+{% load thumbnail %}
 <div class="col-sm-4">
     <div class="product-image-wrapper">
         <div class="single-products">
             <div class="productinfo text-center">
                 {% if pro.image %}
-                    <img src="{{ pro.image.url }}" alt="">
+                    {% thumbnail pro.image '268x250' crop='center' as im %}
+                        <img src="{{ im.url }}" alt="123">
+                    {% endthumbnail %}
                 {% else %}
                     <img src="/static/images/shop/product.jpg" alt="">
                 {% endif %} 
 
-                <h2>{{pro.price}}دلار</h2>
+                <h2>{{pro.price}}</h2>
                 <p> {{pro.title}} </p>
-                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>
+
             </div>
             <div class="product-overlay">
                 <div class="overlay-content">
-                    <h2>{{pro.price}} دلار</h2>
+                    <h2>{{pro.price}} </h2>
                     <p> {{pro.short_description}} </p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>
+
                 </div>
             </div>
         </div>

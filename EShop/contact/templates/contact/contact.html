@@ -4,10 +4,8 @@
         <div class="bg">
             <div class="row">
                 <div class="container">
-                    <div class="col-sm-12" style="overflow: hidden; margin-bottom: 40px">    			   			
-                        <h2 class="title text-center">تمـاس با مـا</h2>    			    						<div id="gmap" class="contact-map">
-                                <img src="/static/images/home/Map.jpg" alt="Map">
-                            </div>
+                    <div class="col-sm-12" style="overflow: hidden; margin-bottom: 40px">
+
                     </div>
                 </div>
                 </div>    	
@@ -18,29 +16,24 @@
                         <div class="status alert alert-success" style="display: none"></div>
                         <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
                             {% csrf_token %}
-
-                                <!-- {{form}} -->
-
                             <div class="form-group col-md-6">
-                                <!-- <input type="text" name="name" class="form-control" required="required" placeholder="نام"> -->
                                 {{form.full_name.label_tag}}
                                 {{form.full_name}}
                                 {{form.full_name.error}}
+
                             </div>
                             <div class="form-group col-md-6">
-                                <!-- <input type="email" name="email" class="form-control" required="required" placeholder="ایمیـل"> -->
                                 {{form.email.label_tag}}
                                 {{form.email}}
                                 {{form.email.error}}
+
                             </div>
                             <div class="form-group col-md-12">
-                                <!-- <input type="text" name="subject" class="form-control" required="required" placeholder="موضـوع"> -->
                                 {{form.title.label_tag}}
                                 {{form.title}}
                                 {{form.title.error}}
                             </div>
                             <div class="form-group col-md-12">
-                                <!-- <textarea name="message" id="message" required="" class="form-control" rows="8" placeholder="پیغـام شمـا"></textarea> -->
                                 {{form.message.label_tag}}
                                 {{form.message}}
                                 {{form.message.error}}
@@ -56,11 +49,11 @@
                         <h2 class="title text-center">اطلاعات تماس</h2>
                         <address>
                             <p>گـروه تکنوگـرافی 1614</p>
-                            <p>ایـران - آذربایجـان شرقی - تبریز</p>
+                            <p>{{ setting.address }}</p>
                             <p>مجتـمع تجـاری تفریحـی شمس - طبـقه 2 - پلاک 54</p>
-                            <p>تلفن تماس : 80 21 24 36 044</p>
-                            <p>فکس : 80 21 24 36 044</p>
-                            <p style="font-family: tahoma;">ایمیـل : info@1614GP.ir</p>
+                            <p>تلفن تماس :  {{ setting.phone }}</p>
+                            <p>فکس : {{ setting.fax }}</p>
+                            <p style="font-family: tahoma;">ایمیـل : {{ setting.email }}</p>
                         </address>
                         <div class="social-networks">
                             <h2 class="title text-center">شبکـه های اجتـماعی</h2>

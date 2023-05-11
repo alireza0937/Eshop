@@ -1,0 +1,30 @@
+{% extends 'shared/base.html' %}
+{% load render_partial %}
+{% block content %}
+        <div class="container">
+        <div class="row">
+            {% render_partial 'UserPanel.views.user_panel_menu_component' %}
+            <div class="col-md-8">
+                <table class="table table-responsive table-hover table-striped">
+                    <tr>
+                        <th class="text-right">نام محصول</th>
+                        <th class="text-right">تعداد</th>
+                        <th class="text-right">قیمت</th>
+                    </tr>
+                    {% for products in data.orderdetails_set.all %}
+                        <tr>
+                            <td>{{ products.product.title }}</td>
+                            <td>{{ products.count }}</td>
+                            <td>{{ products.final_price}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

@@ -38,7 +38,7 @@
                 
                 <div class="col-sm-4" style="text-align: left;">
                     <div class="logo">
-                        <a href="index.html"><img src="/static/images/home/logo.png" alt="Logo" style="text-align: center;" /></a>
+                        <a href="{% url 'index-page' %}"><img src="{{ setting.site_logo.url }}" alt="Logo" style="text-align: center;" /></a>
                     </div>
                 </div>
                 
@@ -47,9 +47,9 @@
                         <ul class="nav navbar-nav">
                             {% if request.user.is_authenticated %}
 
-                                <li><a href="#"><i class="fa fa-user"></i> حساب کاربـری</a></li>
+                                <li><a href="{% url 'user-dashboard' %}"><i class="fa fa-user"></i> حساب کاربـری</a></li>
                                 <li><a href="{% url 'logout-page' %}"><i class="fa fa-sign-out"></i> خروج</a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i> سبد خرید</a></li>
+                                <li><a href="{% url 'user-cart-page' %}"><i class="fa fa-shopping-cart"></i> سبد خرید</a></li>
 
                             {% else %}
                                 <li><a href="{% url 'login-page' %}"><i class="fa fa-sign-in"></i> ورود </a></li>
@@ -85,22 +85,14 @@
                     <div class="mainmenu pull-right">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="/" class="active">خـانه</a></li>
-                            <li class="dropdown"><a href="#">فروشگـاه<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="{% url 'product_list' %}">محصولات</a></li>
-                                    <li><a href="product-details.html">جزئیات محصولات</a></li> 
-                                    <li><a href="checkout.html">پرداخت</a></li> 
-                                    <li><a href="cart.html">سبـد خریـد</a></li> 
-                                    <li><a href="{% url 'register-page' %}">ورود</a></li>
-                                </ul>
+                            <li><a href="{% url 'product_list' %}">محصولات<i ></i></a>
+
+                            </li>
+                            <li>
+                                <a href="{% url 'blog-page' %}">مقالات</a>
+
                             </li> 
-                            <li class="dropdown"><a href="#">اخبـار<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="blog.html">آخریـن اخبـار</a></li>
-                                    <li><a href="blog-single.html">صفحـه خبـر</a></li>
-                                </ul>
-                            </li> 
-                            <li><a href="About.html">درباره مـا</a></li>
+                            <li><a href="{% url 'AboutUs-page' %}">درباره مـا</a></li>
                             <li><a href="{% url 'contact' %}">تماس با مـا</a></li>
                         </ul>
                     </div>

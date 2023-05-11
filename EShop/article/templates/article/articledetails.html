@@ -1,0 +1,160 @@
+{% extends 'shared/base.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+{% block content %}
+<section>
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-9">
+					<div class="blog-post-area">
+						<h2 class="title text-center">خبـر شمـاره 1</h2>
+						<div class="single-blog-post">
+							<h3>{{ key.title }}</h3>
+							<div class="post-meta">
+								<ul>
+									<li><i class="fa fa-user"></i>{{ key.auther }}</li>
+									<li><i class="fa fa-clock-o"></i> {{ key.date.time.isoformat }}</li>
+									<li><i class="fa fa-calendar"></i> {{ key.date.date }}</li>
+								</ul>
+								<span>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-half-o"></i>
+								</span>
+							</div>
+							<a href="">
+								<img src="{{ key.image.url }}" alt="">
+							</a>
+							<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده ازلورملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+							<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده ازلورملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+							<div class="pager-area">
+								<ul class="pager pull-left">
+									<li><a href="#">قبلی</a></li>
+									<li><a href="#">بعـدی</a></li>
+								</ul>
+							</div>
+						</div>
+					</div><!--/blog-post-area-->
+					<div class="rating-area">
+						<ul class="ratings">
+							<li class="rate-this">به این مطلب امتیـاز دهیـد :</li>
+							<li>
+								<i class="fa fa-star color"></i>
+								<i class="fa fa-star color"></i>
+								<i class="fa fa-star color"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</li>
+							<li class="color">( 6 نظـر )</li>
+						</ul>
+						<ul class="tag">
+							<li>برچسب :</li>
+							<li><a class="color" href="">برچسب 1 <span>/</span></a></li>
+							<li><a class="color" href="">برچسب 2 <span>/</span></a></li>
+							<li><a class="color" href="">برچسب 3</a></li>
+						</ul>
+					</div><!--/rating-area-->
+					<div class="socials-share">
+						<a href=""><img src="/static/images/blog/socials.png" alt=""></a>
+					</div><!--/socials-share-->
+					<div class="media commnets">
+						<a class="pull-right" href="#">
+                         {% if key.auther.avatar %}
+                            {% thumbnail key.auther.avatar '121x86' crop=center as im %}
+							<img class="media-object" src="{{ im.url }}" alt="">
+                             {% endthumbnail %}
+                         {% else %}
+                                <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                            {% endif %}
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">نویسنده 1</h4>
+							<p>{{ key.auther.about_user }}</p>
+							<div class="blog-socials">
+								<ul>
+									<li><a href=""><i class="fa fa-facebook"></i></a></li>
+									<li><a href=""><i class="fa fa-twitter"></i></a></li>
+									<li><a href=""><i class="fa fa-dribbble"></i></a></li>
+									<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+								<a class="btn btn-primary" href="">سایـر مطالب نویسنده</a>
+							</div>
+						</div>
+					</div><!--Comments-->
+					<div class="response-area">
+						<h2>  نظرات({{ comments.count }}) </h2>
+						<ul class="media-list">
+							{% for comment in comments %}
+							        <li class="media">
+
+								<a class="pull-right" href="#">
+									<img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+								</a>
+								<div class="media-body">
+									<ul class="sinlge-post-meta">
+										<li><i class="fa fa-user"></i>{{ comment.user | lower }}</li>
+										<li><i class="fa fa-clock-o"></i>{{ comment.create_date | time }}</li>
+										<li><i class="fa fa-calendar"></i>{{ comment.create_date.date.isoformat }}</li>
+									</ul>
+									<p>{{ comment.message }}</p>
+									<a class="btn btn-primary" onclick=""><i class="fa fa-reply"></i>پاسـخ</a>
+								</div>
+							</li>
+                                {% for sub_comment in comment.comments_set.all %}
+                                <li class="media second-media">
+								<a class="pull-right" href="#">
+									<img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+								</a>
+								<div class="media-body">
+									<ul class="sinlge-post-meta">
+										<li><i class="fa fa-user"></i>{{ sub_comment.user | title }}</li>
+										<li><i class="fa fa-clock-o"></i>{{ sub_comment.create_date | time }}</li>
+										<li><i class="fa fa-calendar"></i>{{ sub_comment.create_date.date.isoformat }}</li>
+									</ul>
+									<p>{{ sub_comment.message }}</p>
+{#									<a class="btn btn-primary" onclick="get_id({{ key.id }})"><i class="fa fa-reply"></i>پاسـخ</a>#}
+								</div>
+							</li>
+                                {% endfor %}
+							{% endfor %}
+						</ul>
+					</div><!--/Response-area-->
+					<div class="replay-box">
+                        {% if request.user.is_authenticated %}
+						    <div class="row">
+							<div class="col-sm-12">
+                                 <h2>نظـر خود را بنویسیـد</h2>
+                                <div class="text-area">
+                                    <div class="blank-arrow">
+                                        <label>متن پیام</label>
+                                    </div>
+                                    <span>*</span>
+                                    <input type="hidden" value="" id="">
+                                    <textarea name="message" rows="11" id="commentText"></textarea>
+                                    <a class="btn btn-primary" onclick="test({{ key.id }})">ارسال نظر</a>
+                                </div>
+							</div>
+						</div>
+                        {% else %}
+                            <div class="alert alert-warning">
+                               شوید <a href="{% url 'login-page' %}">وارد</a>برای ثبت نظر باید
+                            </div>
+                        {% endif %}
+					</div><!--/Repaly Box-->
+				</div>
+
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						{% render_partial 'article.views.categories_sort'  %}
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

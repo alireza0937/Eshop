@@ -1,0 +1,27 @@
+{% extends 'shared/base.html' %}
+{% load render_partial %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% render_partial 'UserPanel.views.user_panel_menu_component' %}
+            <div class="col-md-8">
+                <table class="table table-responsive table-hover table-striped">
+                    <tr>
+                        <th class="text-right">شناسه</th>
+                        <th class="text-right">تاریخ ثبت فاکتور</th>
+                        <th class="text-right">قیمت نهایی</th>
+                        <th class="text-right"> دستورات </th>
+                    </tr>
+                    {% for products in history %}
+                        <tr>
+                            <td>{{ products.id }}</td>
+                            <td>{{ products.payment_data.isoformat }}</td>
+                            <td>{{ products.basket_total}}</td>
+                            <td><a href="{% url 'order-detail-page' products.pk %}"><button  class="btn btn-success" >جزئیات</button></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

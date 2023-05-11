@@ -75,7 +75,7 @@ class LoginView(View):
                     is_password_correct = user.check_password(user_password)
                     if is_password_correct:
                         login(request, user)
-                        return redirect(reverse('index-page'))
+                        return redirect(reverse('user-dashboard'))
 
                     else:
                         login_form.add_error('password', 'رمز وارد شده اشتباه است')
